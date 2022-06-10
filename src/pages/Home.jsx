@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect} from "react";
+// import axios from "axios";
 import { useDispatch ,useSelector} from "react-redux";
 import { getFeedsApi } from "../redux/Feed/Feed.action";
 
@@ -10,6 +10,7 @@ const Home = () => {
     const {data,getFeeds}=useSelector((store)=>store.feed);
  
   useEffect(() => {
+
     if(data.length ===0){
       dispatch(getFeedsApi())
     }

@@ -19,4 +19,4 @@ export const loginApi=(data)=>(dispatch)=>{
 
 }
 
-export const logout=()=>({type:LOGOUT});
+export const logoutApi=()=>({type:LOGOUT});

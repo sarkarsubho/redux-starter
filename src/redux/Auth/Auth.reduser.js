@@ -1,10 +1,12 @@
 import { LOGIN_ERROR, LOGIN_lOADING, LOGIN_SUCCESS, LOGOUT } from "./Auth.type"
 
+let token=localStorage.getItem("token");
+
 const initialState={
     loading:false,
     error:false,
-    isAuth:false,
-    token:""
+    isAuth:!!token,
+    token:token
 }
 
 
@@ -15,6 +17,8 @@ export const authReduser=(store=initialState,{type,payload})=>{
             return{...store,loading:true,error:false}
         }
         case LOGIN_SUCCESS:{
+             // already is a string so no need to stringyfy
+            localStorage.setItem("token",payload.token)
             return{...store,
             loading:false,
             error:false,
@@ -32,7 +36,9 @@ export const authReduser=(store=initialState,{type,payload})=>{
             }
         }
         case LOGOUT:{
-            return{...store,isAuth:false}
+            // already is a string so no need to stringyfy
+            localStorage.removeItem("token");
+            return{...store,isAuth:false,token:""}
         }
        
     
