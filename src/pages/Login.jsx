@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { loginApi } from "../redux/Auth/Auth.action";
 
 const Login = () => {
+  const dispatch=useDispatch();
   const navigate = useNavigate();
   const [loginCreds, setLoginCreds] = useState({
     email: "eve.holt@reqres.in",
@@ -18,9 +21,14 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    dispatch(loginApi(loginCreds))
     // TODO
-    navigate("/");
+    // navigate("/");
   };
+  useEffect(()=>{
+    
+  },[])
 
   return (
     <div>
